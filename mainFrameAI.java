@@ -716,15 +716,13 @@ public class mainFrameAI extends javax.swing.JFrame implements ActionListener{
     public void DoPlay(){
         if(myPlayerID == this.currentPlayer){
             this.selectAction();
-            String action = this.action;
-            int cardID = this.cardNumber;
             //ボタンクリックをコードで実装
-            if(action != "" && cardID != -1){
-                switch(action){
+            if(this.action != "" && this.cardNumber != -1){
+                switch(this.action){
                     case "Forward":
                         //前進ボタン
                         try {
-                            int number = this.myCardList.get(cardID);
+                            int number = this.myCardList.get(this.cardNumber);
                             this.sendForwardMessage(number);
                         } catch (IOException ex) {
                             Logger.getLogger(mainFrameAI.class.getName()).log(Level.SEVERE, null, ex);
@@ -735,7 +733,7 @@ public class mainFrameAI extends javax.swing.JFrame implements ActionListener{
                     case "Backward":
                         //後退ボタン
                         try {
-                            int number = this.myCardList.get(cardID);
+                            int number = this.myCardList.get(this.cardNumber);
                             this.sendBackwardMessage(number);
                         } catch (IOException ex) {
                             Logger.getLogger(mainFrameAI.class.getName()).log(Level.SEVERE, null, ex);
@@ -746,7 +744,7 @@ public class mainFrameAI extends javax.swing.JFrame implements ActionListener{
                     case "Attack":
                         //攻撃ボタン
                         try {
-                            int number = this.myCardList.get(cardID);
+                            int number = this.myCardList.get(this.cardNumber);
                             int cardCount = this.selectCardCount(this.myCardList, number);
                             this.sendAttackMessage(number,cardCount);
                         } catch (IOException ex) {
